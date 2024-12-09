@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>实时视频流</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <style>
+        .video-container {
+            width: 640px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        #video-stream {
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <h2>实时视频流</h2>
+        <img id="video-stream" width="640" height="480">
+    </div>
+
+    <script>
+        var socket = io();
+        var videoElement = document.getElementById('video-stream');
+
+        socket.on('update_frame', function(data) {
+            videoElement.src = 'data:image/jpeg;base64,' + data;
+        });
+    </script>
+</body>
+</html>
