@@ -10,7 +10,8 @@ sio = socketio.Client(reconnection=True, reconnection_attempts=5, reconnection_d
 def connect_to_server():
     try:
         # 设置更长的连接超时时间
-        server_url = 'http://192.168.3.44:5000'
+        server_url = 'http://111.229.145.54:9877'
+        # server_url = 'http://127.0.0.1:9877'
         sio.connect(server_url, wait_timeout=10)
         print(f"已连接到服务器: {server_url}")
         return True
